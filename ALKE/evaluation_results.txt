@@ -1,0 +1,13 @@
+--- Model Performance Metrics (LOOCV) ---
+ROC-AUC: 0.5000
+AUPR (Avg Precision): 0.5000
+
+Classification Report (Threshold = 0.5):
+              precision    recall  f1-score   support
+
+           0       0.50      1.00      0.67       430
+           1       0.00      0.00      0.00       430
+
+    accuracy                           0.50       860
+   macro avg       0.25      0.50      0.33       860
+weighted avg       0.25      0.50      0.33       860
