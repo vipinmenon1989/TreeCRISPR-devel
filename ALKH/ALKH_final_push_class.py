@@ -7,7 +7,7 @@ from sklearn.model_selection import LeaveOneOut
 from sklearn.metrics import roc_auc_score, average_precision_score, classification_report, precision_recall_fscore_support
 
 # 1. LOAD DATA
-df = pd.read_csv('ALKE_filtered_sampled.csv')
+df = pd.read_csv('ALKH_extreme_balanced.csv')
 y_binary = df['class'].values
 X = df.drop(columns=['ID', 'LFC', 'class'])
 
@@ -110,4 +110,4 @@ with open('top_50_biological_features.txt', 'w') as f:
     for feat in top_50_global:
         f.write(f"{feat}\t{final_scores[feat]:.4f}\n")
 
-print("Files generated: ALKE_metric.csv, shap_beeswarm_top50.png, shap_bar_top50.png, top_50_biological_features.txt")
+print("Files generated: ALKH_metric.csv, shap_beeswarm_top50.png, shap_bar_top50.png, top_50_biological_features.txt")

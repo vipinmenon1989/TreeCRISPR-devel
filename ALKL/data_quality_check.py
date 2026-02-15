@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 
-df = pd.read_csv('ALKE_filtered_sample.csv')
+df = pd.read_csv('ALKL_filtered_sample.csv')
 X = df.drop(columns=['ID', 'LFC', 'class'])
 
 # 1. Sparsity Check

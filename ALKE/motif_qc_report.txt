@@ -1,0 +1,12 @@
+CAS9 MOTIF QC & LFC ANALYSIS
+============================
+Total Sequences (-1.5 <= LFC <= -0.5): 430
+GG Counts: 227
+non-GG Counts: 203
+Purity: 52.79% (Target: 90.0%)
+
+STATISTICS:
+Purity P-value (Binomial): 2.5573e-86
+LFC Dist P-value (Mann-Whitney): 5.5417e-01
+
+CONCLUSION: FAILED. Purity is significantly below target.
