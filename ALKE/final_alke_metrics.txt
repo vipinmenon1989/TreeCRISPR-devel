@@ -1,0 +1,12 @@
+ALKME Detailed Performance Report
+ROC-AUC: 0.5370
+AUPR: 0.5423
+
+              precision    recall  f1-score   support
+
+           0       0.54      0.55      0.54       430
+           1       0.54      0.53      0.53       430
+
+    accuracy                           0.54       860
+   macro avg       0.54      0.54      0.54       860
+weighted avg       0.54      0.54      0.54       860

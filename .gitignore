@@ -1,0 +1,13 @@
+# Genomic data and large datasets
+bigwig/
+*.csv
+*.bed
+*.png
+
+# Environment and model weights
+**/fine-tuned/
+**/fine-tune/
+
+# Python cache
+__pycache__/
+*.pyc

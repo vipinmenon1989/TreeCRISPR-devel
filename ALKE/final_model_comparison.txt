@@ -1,0 +1,12 @@
+Fine-tuned AUC: 0.5352
+Scratch AUC: 0.5039
+
+Fine-tuned Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.53      0.64      0.58       430
+           1       0.54      0.43      0.48       430
+
+    accuracy                           0.53       860
+   macro avg       0.54      0.53      0.53       860
+weighted avg       0.54      0.53      0.53       860
