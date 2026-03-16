@@ -1,0 +1,1 @@
+python3 All_signal_parallel_processing.py CRISPR_histone.bed "0,50,150,250,500,2500" H2AZ.bigwig H3K27ac.bigwig H3K27me3.bigwig H3K36me3.bigwig H3K4me1.bigwig H3K4me2.bigwig H3K4me3.bigwig H3K79me2.bigwig H3K9ac.bigwig H3K9me3.bigwig K562_chromatin_strucutre.bigwig K562_DNA_methylation.bigWig K562_dnase.bigwig     

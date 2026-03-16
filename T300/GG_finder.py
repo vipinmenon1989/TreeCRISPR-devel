@@ -22,8 +22,8 @@ def run_qc_analysis():
         print(f"Error reading file: {e}")
         sys.exit(1)
 
-    # 2. Filter: LFC between 1.5 and 3.0 (UPDATED CRITERIA)
-    subset = df[(df['lfc'] >= 1.5) & (df['lfc'] <= 3.0)].copy()
+    # 2. Filter: LFC between -1.5 and -0.5
+    subset = df[(df['lfc'] <= -0.5) & (df['lfc'] >= -1.5)].copy()
     subset['Group'] = subset['GG_motif'].apply(lambda x: 'GG' if x == 'GG' else 'non-GG')
 
     # 3. Counts & Purity
@@ -41,6 +41,7 @@ def run_qc_analysis():
                                    subset[subset['Group']=='non-GG']['lfc'])
     
     # Binomial Test (Purity significance)
+    # Using n=total for compatibility with newer Scipy versions
     binom_p = 1.0
     if total > 0:
         res = binomtest(n_gg, n=total, p=args.target, alternative='less')
@@ -50,7 +51,7 @@ def run_qc_analysis():
     with open(args.report, 'w') as f:
         f.write("CAS9 MOTIF QC & LFC ANALYSIS\n")
         f.write("============================\n")
-        f.write(f"Total Sequences (1.5 <= LFC <= 3.0): {total}\n")
+        f.write(f"Total Sequences (-1.5 <= LFC <= -0.5): {total}\n")
         f.write(f"GG Counts: {n_gg}\n")
         f.write(f"non-GG Counts: {n_non_gg}\n")
         f.write(f"Purity: {purity:.2f}% (Target: {args.target*100}%)\n\n")
@@ -74,10 +75,11 @@ def run_qc_analysis():
     
     axes[0].set_title(f"LFC Distribution\n(MWU P-val: {mw_p_val:.4e})")
     axes[0].set_ylabel("Log Fold Change (LFC)")
-    axes[0].set_ylim(1.5, 3.0)  # Updated Y-axis limits
+    axes[0].set_ylim(-1.5, -0.5)
     axes[0].grid(axis='y', linestyle='--', alpha=0.5)
 
     # --- RIGHT PLOT: Counts (Bar Plot) ---
+    # Prepare data for bar plot
     bar_data = pd.DataFrame({
         'Motif': ['GG', 'non-GG'],
         'Count': [n_gg, n_non_gg]
@@ -88,6 +90,7 @@ def run_qc_analysis():
     
     # Add text labels on top of bars
     for index, row in bar_data.iterrows():
+        # Find the correct x location based on order
         x_loc = 1 if row['Motif'] == 'GG' else 0
         axes[1].text(x_loc, row['Count'], f"{row['Count']}", 
                      color='black', ha="center", va="bottom", fontweight='bold')
@@ -95,6 +98,7 @@ def run_qc_analysis():
     axes[1].set_title(f"Sequence Counts\n(Purity: {purity:.2f}%)")
     axes[1].set_ylabel("Number of gRNAs")
 
+    # Final Layout Adjustments
     plt.tight_layout()
     plt.savefig(args.plot, dpi=300)
     print(f"Done. Report: {args.report} | Plot: {args.plot}")

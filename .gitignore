@@ -1,13 +1,23 @@
-# Genomic data and large datasets
+# 1. Python Caches
+__pycache__/
+*.pyc
+
+# 2. Model Weights & Environments (CRITICAL for GitHub 100MB limit)
+**/fine-tuned/
+**/fine-tune/
+
+# 3. Genomic Data, Large Datasets, & Results
 bigwig/
 *.csv
 *.bed
 *.png
+*.pkl
+*.txt
 
-# Environment and model weights
-**/fine-tuned/
-**/fine-tune/
-
-# Python cache
-__pycache__/
-*.pyc
+# 4. Explicit Allowlist for Scripts and Configs
+!*.py
+!*.R
+!*.sh
+!*.slurm
+!*.json
+!.gitignore
