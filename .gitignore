@@ -13,6 +13,7 @@ bigwig/
 *.png
 *.pkl
 *.txt
+*.pdf
 
 # 4. Explicit Allowlist for Scripts and Configs
 !*.py
